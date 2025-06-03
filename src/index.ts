@@ -4,6 +4,7 @@ export interface VectorStoreChunkMetadata {
   id: string;
   mimetype: string;
   filename: string;
+  url: string
   page: number;
   pageIndex: number;
   score?: number;
@@ -34,3 +35,17 @@ export interface LoadingEvent {
 }
 
 export type CustomEvent = StreamAudioEvent | PageJumpEvent | LoadingEvent;
+
+// Citations
+
+export interface PageCitation {
+  pageIndex: number
+  pageNumber: number
+}
+
+export interface FileCitation { 
+  id: string;
+  filename: string; 
+  url: string
+  pages: PageCitation[]
+}
