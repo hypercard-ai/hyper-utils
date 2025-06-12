@@ -34,7 +34,12 @@ export interface LoadingEvent {
 	message: string;
 }
 
-export type CustomEvent = StreamAudioEvent | PageJumpEvent | LoadingEvent;
+export interface GenerateReportEvent {
+	kind: "generate_report";
+	content: string;
+}
+
+export type CustomEvent = StreamAudioEvent | PageJumpEvent | LoadingEvent | GenerateReportEvent;
 
 // Citations
 
