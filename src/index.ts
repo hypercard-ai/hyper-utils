@@ -48,9 +48,10 @@ export interface PageCitation {
   pageNumber: number
 }
 
-export interface FileCitation { 
+export interface Citation { 
   id: string;
-  filename: string; 
+  type: 'file' | 'web'
+  name: string; 
   url: string
-  pages: PageCitation[]
+  pages?: PageCitation[]
 }
