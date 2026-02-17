@@ -55,3 +55,54 @@ export interface Citation {
   url: string
   pages?: PageCitation[]
 }
+
+// HYPER AGENT GRAPH CONFIG
+
+export interface ConfigurableInput {
+	// bot (required)
+	bot_id: string;
+	bot_name: string;
+	bot_description: string;
+
+	// node-specific prompt/model overrides (optional)
+	query_rewriter_prompt?: string;
+	query_rewriter_model?: string;
+	rag_answer_prompt?: string;
+	rag_answer_model?: string;
+	direct_answer_prompt?: string;
+	direct_answer_model?: string;
+	voice_answer_prompt?: string;
+	voice_answer_model?: string;
+
+	// agent (required + defaults)
+	llm: string;
+	temperature?: number;
+	first_message?: string;
+
+	// vector (defaults)
+	vector_collection_id?: string;
+	vector_search_count?: number;
+	vector_rerank_count?: number;
+	vector_page_offset?: number;
+
+	// stt/tts (defaults)
+	stt_enabled?: boolean;
+	stt_model?: string;
+	tts_enabled?: boolean;
+	tts_model?: string;
+
+	// search (defaults)
+	vector_search_enabled?: boolean;
+	web_search_enabled?: boolean;
+	api_search_enabled?: boolean;
+
+	// user (required + optional)
+	user_id: string;
+	user_name: string;
+	user_email: string;
+	user_phone?: string;
+
+	// company (required)
+	company_id: string;
+	company_name: string;
+}
