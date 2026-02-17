@@ -59,10 +59,11 @@ export interface Citation {
 // HYPER AGENT GRAPH CONFIG
 
 export interface ConfigurableInput {
-	// bot (required)
+	// bot (required + optional)
 	bot_id: string;
 	bot_name: string;
-	bot_description: string;
+	bot_slug: string;
+	bot_description?: string;
 
 	// node-specific prompt/model overrides (optional)
 	query_rewriter_prompt?: string;
@@ -80,7 +81,6 @@ export interface ConfigurableInput {
 	first_message?: string;
 
 	// vector (defaults)
-	vector_collection_id?: string;
 	vector_search_count?: number;
 	vector_rerank_count?: number;
 	vector_page_offset?: number;
@@ -96,13 +96,13 @@ export interface ConfigurableInput {
 	web_search_enabled?: boolean;
 	api_search_enabled?: boolean;
 
-	// user (required + optional)
-	user_id: string;
-	user_name: string;
-	user_email: string;
+	// user (optional)
+	user_id?: string;
+	user_name?: string;
+	user_email?: string;
 	user_phone?: string;
 
-	// company (required)
-	company_id: string;
-	company_name: string;
+	// company (optional)
+	company_id?: string;
+	company_name?: string;
 }
