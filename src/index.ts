@@ -58,14 +58,28 @@ export interface Citation {
 
 // HYPER AGENT GRAPH CONFIG
 
-export interface ConfigurableInput {
-	// bot (required + optional)
-	bot_id: string;
-	bot_name: string;
-	bot_slug: string;
-	bot_description?: string;
+export interface BotJsonConfig {
+	// agent
+	llm?: string;
+	temperature?: number;
+	first_message?: string;
 
-	// node-specific prompt/model overrides (optional)
+	// vector
+	vector_search_count?: number;
+	vector_rerank_count?: number;
+
+	// search
+	vector_search_allowed?: boolean;
+	web_search_allowed?: boolean;
+	api_search_allowed?: boolean;
+
+	// stt/tts
+	stt_allowed?: boolean;
+	stt_model?: string;
+	tts_allowed?: boolean;
+	tts_model?: string;
+
+	// node-specific prompt/model overrides
 	query_rewriter_prompt?: string;
 	query_rewriter_model?: string;
 	rag_answer_prompt?: string;
@@ -74,35 +88,31 @@ export interface ConfigurableInput {
 	direct_answer_model?: string;
 	voice_answer_prompt?: string;
 	voice_answer_model?: string;
+}
 
-	// agent (required + defaults)
-	llm: string;
-	temperature?: number;
-	first_message?: string;
+export interface BotRuntimeConfig extends BotJsonConfig {
+	// bot
+	bot_id: string;
+	bot_name: string;
+	bot_slug: string;
+	bot_description?: string;
 
-	// vector (defaults)
-	vector_search_count?: number;
-	vector_rerank_count?: number;
-	vector_page_offset?: number;
-
-	// stt/tts (defaults)
-	stt_enabled?: boolean;
-	stt_model?: string;
-	tts_enabled?: boolean;
-	tts_model?: string;
-
-	// search (defaults)
+	// search UI settings
 	vector_search_enabled?: boolean;
 	web_search_enabled?: boolean;
 	api_search_enabled?: boolean;
 
-	// user (optional)
+	// stt/tss UI settings
+	stt_enabled?: boolean;
+	tts_enabled?: boolean;
+
+	// user
 	user_id?: string;
 	user_name?: string;
 	user_email?: string;
 	user_phone?: string;
 
-	// company (optional)
+	// company
 	company_id?: string;
 	company_name?: string;
 }
