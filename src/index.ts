@@ -56,11 +56,14 @@ export interface Citation {
   pages?: PageCitation[]
 }
 
+export type ModelProvider = 'anthropic' | 'google' | 'groq' | 'open-ai'
+
 // HYPER AGENT GRAPH CONFIG
 
 export interface BotJsonConfig {
 	// agent
-	llm?: string;
+	model_provider?: ModelProvider;
+	model_id?: string;
 	temperature?: number;
 	first_message?: string;
 
@@ -73,11 +76,15 @@ export interface BotJsonConfig {
 	web_search_allowed?: boolean;
 	api_search_allowed?: boolean;
 
-	// stt/tts
+	// stt
 	stt_allowed?: boolean;
-	stt_model?: string;
+	stt_model_provider?: string;
+	stt_model_id?: string;
+
+	// tts
 	tts_allowed?: boolean;
-	tts_model?: string;
+	tts_model_provider?: string;
+	tts_model_id?: string;
 
 	// node-specific prompt/model overrides
 	query_rewriter_prompt?: string;
