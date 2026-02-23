@@ -49,11 +49,16 @@ export interface PageCitation {
 }
 
 export interface Citation { 
-  id: string;
-  type: 'file' | 'web'
-  name: string; 
-  url: string
-  pages?: PageCitation[]
+	id: number;
+	type: "file" | "web" | "db" | "api";
+	title: string;
+	content: string;
+	fileId?: string; // ID in DB
+	page?: number;
+	pageJump?: number;
+	mimetype?: string;
+	path?: string; // Url for web, filename for file
+	score?: number;
 }
 
 export type ModelProvider = 'anthropic' | 'google' | 'groq' | 'open-ai'
